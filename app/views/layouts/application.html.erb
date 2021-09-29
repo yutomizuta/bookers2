@@ -4,12 +4,53 @@
     <title>Bookers2</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header>
+      <nav class="navbar navbar-expand navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand" href="/"><span>Bookers</span></a>
+          <div>
+            <ul class="navbar-nav navbar-right">
+            <% if user_signed_in? %>
+            <li>
+              <%= link_to "Home", user_path(current_user), class:"fas fa-home" %>
+            </li>
+            <li>
+              <%= link_to "Users", users_path, class:"fas fa-users" %>
+            </li>
+            <li>
+              <%= link_to "Books", books_path, class:"fas fa-book-open" %>
+            </li>
+            <li>
+              <%= link_to "logout", destroy_user_session_path, method: :delete, class:"fas fa-sign-out-alt" %>
+            </li>
+            <% else %>
+            <li>
+              <%= link_to "Home", root_path, class:"fas fa-home" %>
+            </li>
+            <li>
+              <%= link_to "About", home_about_path, class:"fas fa-link" %>
+            </li>
+            <li>
+              <%= link_to "sign up", new_user_registration_path, class:"fas fa-user-plus" %>
+            </li>
+            <li>
+              <%= link_to "login", new_user_session_path, class:"fas fa-sign-in-alt" %>
+            </li>
+            <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main class="mb-auto">
     <%= yield %>
+    </main>
   </body>
 </html>
