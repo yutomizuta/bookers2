@@ -13,13 +13,14 @@
     </div>
     <div class="col-md-8 offset-md-1">
       <h1>Books</h1>
-      
       <table class="table">
         <thead>
           <tr>
             <th></th>
             <th>Title</th>
             <th>Opinion</th>
+            <th></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -36,6 +37,22 @@
                 <% end %>
               </td>
               <td><%= book.body %></td>
+              <td>
+                <% if book.favorited_by?(current_user) %>
+                  <%= link_to book_favorites_path(book), method: :delete do %>
+                    <i class="fas fa-heart"></i>
+                    <%= book.favorites.count %>
+                  <% end %>
+                <% else %>
+                  <%= link_to book_favorites_path(book), method: :post do %>
+                    <i class="far fa-heart"></i>
+                    <%= book.favorites.count %>
+                  <% end %>
+                <% end %>
+              </td>
+              <td>
+                コメント数: <%= "#{book.book_comments.count}" %>
+              </td>
             </tr>
           <% end %>
         </tbody>
