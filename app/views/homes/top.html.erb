@@ -1,31 +1,43 @@
-<% if flash[:notice] %>
-  <%= flash[:notice] %>
-<% end %>
-<div class="container">
-  <div class="row">
-    <div class="mx-auto">
-      <h1>
-        welcome to 
-        <i class="fas fa-book"></i>
-        <strong>Bookers!!</strong>
-        </h1>
-      <p>
-        In
-        <i class="fas fa-book"></i>
-        <strong>Bookers,</strong> </br>
-        </br>
-        you can share and exchange your opinions , inpressions , and emotions </br>
-        about various books!
-      </p>
-      
-      <div class="btn-wrapper col-10 mx-auto">
-        <div class="row">
-          <%= link_to "Log in", new_user_session_path, class: "btn btn-primary mb-3" %>
+<main class="mb-auto">
+  <% if flash[:notice] %>
+    <%= flash[:notice] %>
+  <% end %>
+  <div class="container">
+    <div class="row">
+      <div class="mx-auto">
+        <h1>
+          welcome to 
+          <i class="fas fa-book"></i>
+          <strong>Bookers!!</strong>
+          </h1>
+        <p>
+          In
+          <i class="fas fa-book"></i>
+          <strong>Bookers,</strong> </br>
+          </br>
+          you can share and exchange your opinions , inpressions , and emotions </br>
+          about various books!
+        </p>
+        
+        <div class="btn-wrapper col-10 mx-auto">
+          <div class="row">
+            <%= link_to "Log in", new_user_session_path, class: "btn btn-info btn-sm btn-block mb-3" %>
+          </div>
+          <div class="row">
+            <%= link_to "Sign up", new_user_registration_path, class: "btn btn-success btn-sm btn-block" %>
+          </div>  
         </div>
-        <div class="row">
-          <%= link_to "Sign up", new_user_registration_path, class: "btn btn-success" %>
-        </div>  
       </div>
     </div>
   </div>
-</div>
+</main>  
+
+<footer>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="mx-auto">
+        <p>CopyRight Infratop.inc</p>
+      </div>
+    </div>
+  </div>
+</footer>
